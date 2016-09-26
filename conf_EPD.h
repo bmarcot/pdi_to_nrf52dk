@@ -36,21 +36,21 @@
 #include <math.h>
 #include <stdio.h>
 // Driverlib includes
-#include "hw_types.h"
-#include "hw_ints.h"
-#include "hw_memmap.h"
-#include "hw_common_reg.h"
-#include "interrupt.h"
-#include "hw_apps_rcm.h"
-#include "prcm.h"
-#include "rom.h"
-#include "rom_map.h"
-#include "prcm.h"
-#include "gpio.h"
-#include "utils.h"
-#include "pin.h"
-#include "spi.h"
-#include "timer.h"
+/* #include "hw_types.h" */
+/* #include "hw_ints.h" */
+/* #include "hw_memmap.h" */
+/* #include "hw_common_reg.h" */
+/* #include "interrupt.h" */
+/* #include "hw_apps_rcm.h" */
+/* #include "prcm.h" */
+/* #include "rom.h" */
+/* #include "rom_map.h" */
+/* #include "prcm.h" */
+/* #include "gpio.h" */
+/* #include "utils.h" */
+/* #include "pin.h" */
+/* #include "spi.h" */
+/* #include "timer.h" */
 // Common interface includes
 #include "timer_if.h"
 #ifndef CONF_EPD_H_INCLUDED
