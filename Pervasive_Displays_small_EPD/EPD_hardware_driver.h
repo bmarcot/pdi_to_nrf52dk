@@ -41,10 +41,9 @@
 #define	_LOW       				!_HIGH       /**< signal low */
 
 
-#define	config_gpio_dir_o(PinIO,GPIO_BASE,ucPin)  {MAP_PinTypeGPIO(PinIO, PIN_MODE_0, false);\
-									 	 	 	   MAP_GPIODirModeSet(GPIO_BASE, _BV(ucPin), GPIO_DIR_MODE_OUT);}/**< set output direction for an IOPORT pin */
-#define	config_gpio_dir_i(PinIO,GPIO_BASE,ucPin)  {MAP_PinTypeGPIO(PinIO, PIN_MODE_0, false);\
-									 	 	 	   MAP_GPIODirModeSet(GPIO_BASE, _BV(ucPin), GPIO_DIR_MODE_IN);}  /**< set input direction for an IOPORT pin */
+#define	config_gpio_dir_o(PinIO,GPIO_BASE,ucPin) gpio_direction_output(ucPin, 0)
+#define	config_gpio_dir_i(PinIO,GPIO_BASE,ucPin) gpio_direction_input(ucPin)
+
 #define	set_gpio_high(GPIO_BASE,Pin)      		   GPIOPinWrite (GPIO_BASE, _BV(Pin),_BV(Pin)) /**< set HIGH for an IOPORT pin */
 #define	set_gpio_low(GPIO_BASE,Pin)          	   GPIOPinWrite (GPIO_BASE, _BV(Pin),0)  /**< set LOW for an IOPORT pin */
 //#define	set_gpio_invert(GPIO_BASE,Pin)    BITINV(GPIO_BASE,Pin) /**< toggle the value of an IOPORT pin */
