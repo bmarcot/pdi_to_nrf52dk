@@ -44,16 +44,25 @@ void TimerBaseIntHandler(void);
  * actual value:  1.000mSec
  */
  void initialize_EPD_timer(void) {
-	 Timer_IF_Init(PRCM_TIMERA0, TIMERA0_BASE, TIMER_CFG_PERIODIC, TIMER_A, 0);
-	  Timer_IF_IntSetup(TIMERA0_BASE, TIMER_A, TimerBaseIntHandler);
+	 NRF_TIMER4->MODE = TIMER_MODE_MODE_Timer << TIMER_MODE_MODE_Pos;
+	 NRF_TIMER4>INTENSET =
+		 TIMER_INTENSET_COMPARE0_Set << TIMER_INTENSET_COMPARE0_Pos;
+	 NRF_TIMER4->SHORTS = (TIMER_SHORTS_COMPARE0_CLEAR_Enabled << TIMER_SHORTS_COMPARE0_CLEAR_Pos)
+		 | (TIMER_SHORTS_COMPARE0_STOP_Enabled << TIMER_SHORTS_COMPARE0_STOP_Pos);
+	 NRF_TIMER4->CC[0] = 1000;
+	 NRF_TIMER4->BITMODE = TIMER_BITMODE_BITMODE_32Bit << TIMER_BITMODE_BITMODE_Pos;
+	 NRF_TIMER4->PRESCALER = 4 << TIMER_PRESCALER_PRESCALER_Pos;
+	 /* Timer_IF_Init(PRCM_TIMERA0, TIMERA0_BASE, TIMER_CFG_PERIODIC, TIMER_A, 0); */
+	 /*  Timer_IF_IntSetup(TIMERA0_BASE, TIMER_A, TimerBaseIntHandler); */
 }
 
 /**
  * \brief Start Timer
  */
 void start_EPD_timer(void) {
-    Timer_IF_Start(TIMERA0_BASE, TIMER_A,
-                  PERIODIC_TEST_CYCLES / 1000);
+	NRF_TIMER4->TASKS_START = 1;
+    /* Timer_IF_Start(TIMERA0_BASE, TIMER_A, */
+    /*               PERIODIC_TEST_CYCLES / 1000); */
 	EPD_Counter = 0;
 }
 
@@ -61,7 +70,8 @@ void start_EPD_timer(void) {
  * \brief Stop Timer
  */
 void stop_EPD_timer(void) {
-	Timer_IF_Stop(TIMERA0_BASE, TIMER_A);
+	/* Timer_IF_Stop(TIMERA0_BASE, TIMER_A); */
+	NRF_TIMER4->TASKS_STOP = 1;
 }
 
 /**
@@ -81,7 +91,8 @@ void set_current_time_tick(uint32_t count) {
  */
 void TimerBaseIntHandler(void)
 {
-    Timer_IF_InterruptClear(TIMERA0_BASE);
+	//Timer_IF_InterruptClear(TIMERA0_BASE);
+    NRF_TIMER4->EVENTS_COMPARE[0] = 0;
     EPD_Counter++;
 }
 
