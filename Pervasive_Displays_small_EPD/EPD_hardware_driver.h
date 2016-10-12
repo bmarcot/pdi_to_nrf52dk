@@ -44,10 +44,10 @@
 #define	config_gpio_dir_o(PinIO,GPIO_BASE,ucPin) gpio_direction_output(ucPin, 0)
 #define	config_gpio_dir_i(PinIO,GPIO_BASE,ucPin) gpio_direction_input(ucPin)
 
-#define	set_gpio_high(GPIO_BASE,Pin)      		   GPIOPinWrite (GPIO_BASE, _BV(Pin),_BV(Pin)) /**< set HIGH for an IOPORT pin */
-#define	set_gpio_low(GPIO_BASE,Pin)          	   GPIOPinWrite (GPIO_BASE, _BV(Pin),0)  /**< set LOW for an IOPORT pin */
+#define	set_gpio_high(GPIO_BASE,Pin)      gpio_set(Pin, 1)    /**< set HIGH for an IOPORT pin */
+#define	set_gpio_low(GPIO_BASE,Pin)       gpio_set(Pin, 0)    /**< set LOW for an IOPORT pin */
 //#define	set_gpio_invert(GPIO_BASE,Pin)    BITINV(GPIO_BASE,Pin) /**< toggle the value of an IOPORT pin */
-#define	input_get(GPIO_BASE,Pin)                  (GPIOPinRead(GPIO_BASE,_BV(Pin))  & Pin )   /**< get current value of an IOPORT pin */
+#define	input_get(GPIO_BASE,Pin)          gpio_get(Pin)       /**< get current value of an IOPORT pin */
 
 #define Temper_PinIO            PIN_59
 #define Temper_PIN              4
