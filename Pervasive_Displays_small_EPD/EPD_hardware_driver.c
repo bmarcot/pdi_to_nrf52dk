@@ -316,10 +316,10 @@ int16_t get_temperature(void) {
 */
 void EPD_initialize_gpio(void) {
 
-    MAP_PRCMPeripheralClkEnable(PRCM_GPIOA0, PRCM_RUN_MODE_CLK);
-    MAP_PRCMPeripheralClkEnable(PRCM_GPIOA1, PRCM_RUN_MODE_CLK);
-    MAP_PRCMPeripheralClkEnable(PRCM_GPIOA2, PRCM_RUN_MODE_CLK);
-    MAP_PRCMPeripheralClkEnable(PRCM_GPIOA3, PRCM_RUN_MODE_CLK);
+    /* MAP_PRCMPeripheralClkEnable(PRCM_GPIOA0, PRCM_RUN_MODE_CLK); */
+    /* MAP_PRCMPeripheralClkEnable(PRCM_GPIOA1, PRCM_RUN_MODE_CLK); */
+    /* MAP_PRCMPeripheralClkEnable(PRCM_GPIOA2, PRCM_RUN_MODE_CLK); */
+    /* MAP_PRCMPeripheralClkEnable(PRCM_GPIOA3, PRCM_RUN_MODE_CLK); */
 
     config_gpio_dir_i(Temper_PinIO,Temper_PORT,Temper_PIN);
     config_gpio_dir_i(EPD_BUSY_PinIO,EPD_BUSY_PORT,EPD_BUSY_PIN);
@@ -356,10 +356,10 @@ void EPD_display_hardware_init(void) {
 }
 void system_init(void)
 {
-    MAP_PRCMPeripheralClkEnable(PRCM_GPIOA0, PRCM_RUN_MODE_CLK);
-    MAP_PRCMPeripheralClkEnable(PRCM_GPIOA1, PRCM_RUN_MODE_CLK);
-    MAP_PRCMPeripheralClkEnable(PRCM_GPIOA2, PRCM_RUN_MODE_CLK);
-    MAP_PRCMPeripheralClkEnable(PRCM_GPIOA3, PRCM_RUN_MODE_CLK);
+    /* MAP_PRCMPeripheralClkEnable(PRCM_GPIOA0, PRCM_RUN_MODE_CLK); */
+    /* MAP_PRCMPeripheralClkEnable(PRCM_GPIOA1, PRCM_RUN_MODE_CLK); */
+    /* MAP_PRCMPeripheralClkEnable(PRCM_GPIOA2, PRCM_RUN_MODE_CLK); */
+    /* MAP_PRCMPeripheralClkEnable(PRCM_GPIOA3, PRCM_RUN_MODE_CLK); */
     config_gpio_dir_o(Temper_PinIO,Temper_PORT,Temper_PIN);
     config_gpio_dir_o(SPICLK_PinIO,SPICLK_PORT,SPICLK_PIN);
     config_gpio_dir_o(EPD_BUSY_PinIO,EPD_BUSY_PORT,EPD_BUSY_PIN);
