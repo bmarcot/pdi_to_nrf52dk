@@ -143,33 +143,33 @@ void PWM_run(uint16_t ms) {
  */
 void epd_spi_init(void) {
 	
-    MAP_PRCMPeripheralClkEnable(PRCM_GSPI, PRCM_RUN_MODE_CLK);  
+    /* MAP_PRCMPeripheralClkEnable(PRCM_GSPI, PRCM_RUN_MODE_CLK);   */
 }
 
 /**
  * \brief Initialize SPI
  */
 void epd_spi_attach(void) {
-    // MAP_PRCMPeripheralReset(PRCM_SSPI);
-    // Configure PIN_05 for SPI0 GSPI_CLK
-    MAP_PinTypeSPI(PIN_05, PIN_MODE_7);
-    // Configure PIN_06 for SPI0 GSPI_MISO
-    MAP_PinTypeSPI(PIN_06, PIN_MODE_7);
-    // Configure PIN_07 for SPI0 GSPI_MOSI
-    MAP_PinTypeSPI(PIN_07, PIN_MODE_7);
-    // Reset SPI
-    MAP_SPIReset(GSPI_BASE);
-    // Configure SPI interface
-    MAP_SPIConfigSetExpClk(GSPI_BASE,MAP_PRCMPeripheralClockGet(PRCM_GSPI),
-                     COG_SPI_baudrate,SPI_MODE_MASTER,SPI_SUB_MODE_0,
-                     (SPI_SW_CTRL_CS |
-                     SPI_4PIN_MODE |
-                     SPI_TURBO_OFF  |
-                     SPI_CS_ACTIVELOW  |
-                     SPI_WL_8));
-    // Enable SPI for communication
-    MAP_SPIEnable(GSPI_BASE);
-    MAP_SPICSEnable(GSPI_BASE);
+    /* // MAP_PRCMPeripheralReset(PRCM_SSPI); */
+    /* // Configure PIN_05 for SPI0 GSPI_CLK */
+    /* MAP_PinTypeSPI(PIN_05, PIN_MODE_7); */
+    /* // Configure PIN_06 for SPI0 GSPI_MISO */
+    /* MAP_PinTypeSPI(PIN_06, PIN_MODE_7); */
+    /* // Configure PIN_07 for SPI0 GSPI_MOSI */
+    /* MAP_PinTypeSPI(PIN_07, PIN_MODE_7); */
+    /* // Reset SPI */
+    /* MAP_SPIReset(GSPI_BASE); */
+    /* // Configure SPI interface */
+    /* MAP_SPIConfigSetExpClk(GSPI_BASE,MAP_PRCMPeripheralClockGet(PRCM_GSPI), */
+    /*                  COG_SPI_baudrate,SPI_MODE_MASTER,SPI_SUB_MODE_0, */
+    /*                  (SPI_SW_CTRL_CS | */
+    /*                  SPI_4PIN_MODE | */
+    /*                  SPI_TURBO_OFF  | */
+    /*                  SPI_CS_ACTIVELOW  | */
+    /*                  SPI_WL_8)); */
+    /* // Enable SPI for communication */
+    /* MAP_SPIEnable(GSPI_BASE); */
+    /* MAP_SPICSEnable(GSPI_BASE); */
 
 }
 
@@ -178,14 +178,14 @@ void epd_spi_attach(void) {
  */
 void epd_spi_detach(void) {
 
-	MAP_SPICSDisable(GSPI_BASE);
-	MAP_SPIDisable(GSPI_BASE);
-	config_gpio_dir_o(SPICLK_PinIO,SPICLK_PORT,SPICLK_PIN);
-	config_gpio_dir_o(SPIMISO_PinIO,SPIMISO_PORT,SPIMISO_PIN);
-	config_gpio_dir_o(SPIMOSI_PinIO,SPIMOSI_PORT,SPIMOSI_PIN);
-	SPIMISO_low();
-	SPIMOSI_low();
-	SPICLK_low();
+	/* MAP_SPICSDisable(GSPI_BASE); */
+	/* MAP_SPIDisable(GSPI_BASE); */
+	/* config_gpio_dir_o(SPICLK_PinIO,SPICLK_PORT,SPICLK_PIN); */
+	/* config_gpio_dir_o(SPIMISO_PinIO,SPIMISO_PORT,SPIMISO_PIN); */
+	/* config_gpio_dir_o(SPIMOSI_PinIO,SPIMOSI_PORT,SPIMOSI_PIN); */
+	/* SPIMISO_low(); */
+	/* SPIMOSI_low(); */
+	/* SPICLK_low(); */
 
 }
 
@@ -195,7 +195,7 @@ void epd_spi_detach(void) {
 uint8_t epd_spi_read(unsigned char data) {
 
 	unsigned char rxData;
-	MAP_SPITransfer(GSPI_BASE, &data, &rxData, 1, 0);
+	/* MAP_SPITransfer(GSPI_BASE, &data, &rxData, 1, 0); */
 	return rxData;
 
 }
